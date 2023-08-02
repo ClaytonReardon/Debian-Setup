@@ -185,6 +185,8 @@ install_all_nerd_fonts() {
 }
 
 install_some_nerd_fonts() {
+    mkdir $home/.fonts
+    
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraCode.zip
     unzip -o FiraCode.zip -d $home/.fonts
     rm FiraCode.zip
@@ -214,6 +216,8 @@ install_some_nerd_fonts() {
 }
 
 install_min_nerd_fonts() {
+    mkdir $home/.fonts
+    
     wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraCode.zip
     unzip -o FiraCode.zip -d $home/.fonts
     rm FiraCode.zip
