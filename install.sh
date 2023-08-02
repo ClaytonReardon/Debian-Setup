@@ -319,15 +319,14 @@ echo -e "${green}
 ${nocolor}"
 
 install_vscodium() {
-    sudo nala install jq -y && curl https://api.github.com/repos/VSCodium/vscodium/releases/latest | jq -r .zipball_url | xargs wget -O vscodium.zip
-    sudo unzip vscodium.zip -do /opt/vscode
-    sudo chown $username:$usermod /opt/vscode
-    rm vscodium.zip
+    sudo nala install jq -y && curl -s https://api.github.com/repos/VSCodium/vscodium/releases/latest | jq -r '.assets[9].browser_download_url' | xargs wget -O vscodium.deb
+    sudo apt install -y vscodium.deb
+    rm vscodium.deb
 }
 
-case "$vscode_choice" in
+case "$vscodium_choice" in
     y)
-        install_vscode
+        install_vscodium
         ;;
     n)
         move_on
