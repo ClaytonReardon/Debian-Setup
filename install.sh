@@ -306,21 +306,24 @@ case "$brave_choice" in
 esac
 
 echo -e "${green}
-██╗   ██╗███████╗ ██████╗ ██████╗ ██████╗ ███████╗
-██║   ██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
-██║   ██║███████╗██║     ██║   ██║██║  ██║█████╗  
-╚██╗ ██╔╝╚════██║██║     ██║   ██║██║  ██║██╔══╝  
- ╚████╔╝ ███████║╚██████╗╚██████╔╝██████╔╝███████╗
-  ╚═══╝  ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝                                                 
+██╗   ██╗███████╗ ██████╗ ██████╗ ██████╗ ██╗██╗   ██╗███╗   ███╗
+██║   ██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██║██║   ██║████╗ ████║
+██║   ██║███████╗██║     ██║   ██║██║  ██║██║██║   ██║██╔████╔██║
+╚██╗ ██╔╝╚════██║██║     ██║   ██║██║  ██║██║██║   ██║██║╚██╔╝██║
+ ╚████╔╝ ███████║╚██████╗╚██████╔╝██████╔╝██║╚██████╔╝██║ ╚═╝ ██║
+  ╚═══╝  ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                                                                               
 ${nocolor}"
 
 install_vscodium() {
-    sudo nala install codium -y
+    sudo nala install jq -y && curl https://api.github.com/repos/VSCodium/vscodium/releases/latest | jq -r .zipball_url | xargs wget -O vscodium.zip
+    sudo unzip vscodium.zip -do /opt/vscode
+    sudo chown $username:$usermod /opt/vscode
+    rm vscodium.zip
 }
 
 case "$vscode_choice" in
     y)
-        install_vscodium
+        install_vscode
         ;;
     n)
         move_on
