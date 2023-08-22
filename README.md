@@ -11,6 +11,4 @@ It will also give the option to install [Sublime Text](https://www.sublimetext.c
 
 It will then configure all these programs, import my .zshrc, and set the default user shell to Zsh.
 
-
-
-I mainly made this script to have a good time practicinng some bash scripting.
+I mainly made this script to have a good time practicing some bash scripting.
